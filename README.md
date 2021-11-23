@@ -26,4 +26,3 @@ Added future features:
 * Hign intensity interval training (HIIT) feature
 * Timer challenge
 * AMRAP (As Many Reps As Possible) workouts
-* 
