@@ -1,5 +1,5 @@
 # Project 1 - Get-Fit
-Get-Fit is an application that will randomize your daily or weekly work-outs. 
+Get-Fit is an application that will randomize your daily or weekly work-outs to focus on strength, cardio, functional fitness and core training.
 
 # User Story:
 As a user, I am presented with a randomized set of exercises that focuses on certain areas of body regions
@@ -23,4 +23,6 @@ THEN I am given a new set of randomly chosen exercises.
 
 Added future features: 
 * "Strike out" exercises after user completes exercise.
-* 
+* Hign intensity interval training (HIIT) feature
+* Timer challenge
+* AMRAP (As Many Reps As Possible) workouts
