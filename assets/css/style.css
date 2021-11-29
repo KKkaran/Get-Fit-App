@@ -1,0 +1,153 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    color: black;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+
+/* Header Style */
+
+header {
+    padding: 15px 20px;
+    background-color: rgb(192, 190, 190);
+    display: flex;
+    margin: 0;
+    text-align: center;
+    width: 100%;
+}
+
+header img {
+    width: 150px;
+    height: 150px;
+    float: left;
+}
+
+form {
+    align-items: center;
+    display: flex;
+    margin: 0 auto;
+    color: #fff;
+}
+
+select {
+    margin-bottom: 10px;
+    margin-top: 10px;
+    font-family: cursive, sans-serif;
+    outline: 0;
+    background: #989998;
+    color: #fff;
+    margin: 20px;
+    border: 1px solid crimson;
+    padding: 15px;
+    border-radius: 9px;
+    display: flex;
+    align-items: center;
+}
+
+form input {
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+}
+
+
+/* Header Style End */
+
+
+/* Footer Style */
+
+footer {
+    background: rgb(192, 190, 190);
+    width: 100%;
+    padding: 50px 35px;
+    color: rgb(249, 249, 252);
+}
+
+footer div {
+    line-height: 1.5;
+    text-align: center;
+}
+
+
+/* Footer styles Ends */
+
+
+/* Hero Style Start */
+
+
+/*<<<<<<<<<<>>>>>>>>>>>>>>
+*/
+
+.image img {
+    width: 150px;
+    height: 150px;
+}
+
+.grid {
+    margin: 80px;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-gap: 15px;
+    align-items: center;
+}
+
+.grid>article {
+    background: cornsilk;
+    border: none;
+    box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.3);
+    border-radius: 20px;
+    text-align: center;
+    width: 150px;
+    height: 400px;
+    /* transition: transform .3s;*/
+}
+
+
+/*.grid>article :hover {
+    /*  transform: translateY(5px);*/
+
+
+/* box-shadow: 2px 2px 26px 0 rgba(0, 0, 0, 0.3);*/
+
+
+/*}*/
+
+.text {
+    padding: 0 20px 20px;
+}
+
+.text h3 {
+    text-transform: uppercase;
+}
+
+
+/* HERO STYLES END */
+
+@media screen and (max-width: 768px) {
+    .grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .grid {
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .grid>article {
+        text-align: center;
+    }
+    header {
+        padding-bottom: 0;
+        justify-content: center;
+        position: relative;
+        width: 100%;
+    }
+    footer {
+        width: 100%;
+    }
+}
