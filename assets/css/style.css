@@ -141,4 +141,13 @@ footer div {
     .grid>article {
         text-align: center;
     }
+    header {
+        padding-bottom: 0;
+        justify-content: center;
+        position: relative;
+        width: 100%;
+    }
+    footer {
+        width: 100%;
+    }
 }
