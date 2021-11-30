@@ -20,7 +20,6 @@ function getExercises(){
         
     })
 }
-
 function displayExercises(){
 
     var m1 = $(".muscle1").find(":selected").text()
@@ -78,5 +77,5 @@ $(".formhandler").on("submit",function(e){
     displayExercises()
 })
 getExercises() //this will fetch all the exercises
-//createMuscleGroups()//this will create the select options(muscles) in the form
-createMuscleGroups()
+createMuscleGroups()//this will create the select options(muscles) in the form
+//
