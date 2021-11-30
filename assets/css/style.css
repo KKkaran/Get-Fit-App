@@ -21,11 +21,61 @@ header {
     width: 100%;
 }
 
+header h1 {
+    font-weight: bold;
+    margin: 0;
+    color: grey;
+}
+
+header a {
+    text-decoration: none;
+    color: black;
+}
+
+header nav {
+    margin: 7px 0;
+    position: sticky;
+}
+
+header nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+}
+
+header nav ul li a {
+    /* to create tighter nav menu */
+    padding: 10px 15px;
+    font-weight: lighter;
+    font-size: 1.55vw;
+     /* Applies text-shadow property to <header> navigation bar text */
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+
+}
+
+/* Add hover effects to nav header */
+header nav ul li a:hover {
+    background:grey;
+    color: white ;
+    border-radius: 15px;
+    text-shadow: none;
+}
+
 header img {
     width: 150px;
     height: 150px;
     float: left;
 }
+
+.glossary {
+    width: 200px;
+    height: 200px;
+    float: left;
+}
+
+
 
 form {
     align-items: center;
@@ -57,7 +107,14 @@ form input {
 
 
 /* Header Style End */
+/* Main Style Start*/
+section {
+    padding: 20px;
+}
 
+p {
+    padding: 10px;
+}
 
 /* Footer Style */
 
@@ -66,13 +123,26 @@ footer {
     width: 100%;
     padding: 50px 35px;
     color: rgb(249, 249, 252);
+    line-height: 1.5;
 }
 
-footer div {
-    line-height: 1.5;
+footer h2 {
     text-align: center;
 }
 
+footer a.glossary {
+    text-align: center;
+    background:grey;
+    color: white ;
+    border-radius: 10px;
+    text-shadow: none;
+    padding: 10px;
+    font-weight: lighter;
+    font-size: 20px;
+    max-height: 50px;
+    position: absolute;
+    right: 0;
+}
 
 /* Footer styles Ends */
 
