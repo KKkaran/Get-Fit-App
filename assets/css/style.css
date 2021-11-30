@@ -34,6 +34,7 @@ header a {
 
 header nav {
     margin: 7px 0;
+    position: sticky;
 }
 
 header nav ul {
@@ -51,6 +52,7 @@ header nav ul li a {
     font-size: 1.55vw;
      /* Applies text-shadow property to <header> navigation bar text */
     text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+
 }
 
 /* Add hover effects to nav header */
@@ -67,7 +69,13 @@ header img {
     float: left;
 }
 
-header.glossary
+.glossary {
+    width: 200px;
+    height: 200px;
+    float: left;
+}
+
+
 
 form {
     align-items: center;
@@ -122,9 +130,18 @@ footer h2 {
     text-align: center;
 }
 
-footer div {
-    text-align: right;
-    color:  rgb(249, 249, 252);
+footer a.glossary {
+    text-align: center;
+    background:grey;
+    color: white ;
+    border-radius: 10px;
+    text-shadow: none;
+    padding: 10px;
+    font-weight: lighter;
+    font-size: 20px;
+    max-height: 50px;
+    position: absolute;
+    right: 0;
 }
 
 /* Footer styles Ends */
