@@ -13,7 +13,8 @@ body {
 /* Header Style */
 
 header {
-    padding: 15px 20px;
+
+  
     background-color: rgb(192, 190, 190);
     display: flex;
     margin: 0;
@@ -34,7 +35,8 @@ header a {
 
 header nav {
     margin: 7px 0;
-    position: sticky;
+    width: 100%;
+    overflow:a auto;
 }
 
 header nav ul {
@@ -43,16 +45,17 @@ header nav ul {
     justify-content: space-between;
     align-items: center;
     list-style: none;
+    width: 80%;
 }
 
 header nav ul li a {
     /* to create tighter nav menu */
-    padding: 10px 15px;
+    padding: 20px;
     font-weight: lighter;
     font-size: 1.55vw;
      /* Applies text-shadow property to <header> navigation bar text */
     text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-
+    float: left;
 }
 
 /* Add hover effects to nav header */
@@ -121,7 +124,7 @@ p {
 footer {
     background: rgb(192, 190, 190);
     width: 100%;
-    padding: 50px 35px;
+    padding: 50px;
     color: rgb(249, 249, 252);
     line-height: 1.5;
 }
@@ -135,7 +138,7 @@ footer a.glossary {
     background:grey;
     color: white ;
     border-radius: 10px;
-    text-shadow: none;
+    text-decoration: none;
     padding: 10px;
     font-weight: lighter;
     font-size: 20px;
@@ -157,7 +160,7 @@ footer a.glossary {
     width: 150px;
     height: 150px;
 }
-
+ 
 .grid {
     margin: 80px;
     display: grid;
