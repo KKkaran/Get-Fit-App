@@ -160,13 +160,16 @@ footer a.glossary {
     width: 150px;
     height: 150px;
 }
- 
+.container{
+    width: 100%;
+} 
 .grid {
-    margin: 80px;
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     grid-gap: 15px;
     align-items: center;
+    width: 100%;
+    padding: 10px;
 }
 
 .grid>article {
@@ -175,7 +178,7 @@ footer a.glossary {
     box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.3);
     border-radius: 20px;
     text-align: center;
-    width: 150px;
+    
     height: 400px;
     /* transition: transform .3s;*/
 }
@@ -201,7 +204,7 @@ footer a.glossary {
 
 /* HERO STYLES END */
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1100px) {
     .grid {
         grid-template-columns: repeat(3, 1fr);
     }
