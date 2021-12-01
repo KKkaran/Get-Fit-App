@@ -14,7 +14,10 @@ body {
   width: auto;
   height: auto;
 }
-header {
+.mainheader {
+  background: linear-gradient(#797e79, white);
+}
+.header {
   padding: 15px 20px;
   background-color: rgb(192, 190, 190);
   display: flex;
@@ -23,10 +26,13 @@ header {
   width: 100%;
 }
 
-header img {
+.s {
+  display: flex;
+  justify-content: center;
+}
+.s > img {
   width: 150px;
   height: 150px;
-  float: left;
 }
 
 form {
@@ -39,7 +45,6 @@ form {
 select {
   margin-bottom: 10px;
   margin-top: 10px;
-  font-family: cursive, sans-serif;
   outline: 0;
   background: #989998;
   margin: 20px;
@@ -60,13 +65,15 @@ form input {
   border-radius: 10px;
   font-size: 20px;
   margin: 5px;
+  border: none;
+  color: black;
 }
 /* Header Style End */
 
 /* Footer Style */
 
 footer {
-  background: rgb(192, 190, 190);
+  background: linear-gradient(white, #797e79);
   width: 100%;
   padding: 50px 35px;
 }
@@ -132,6 +139,14 @@ footer div {
   .grid img {
     width: 80px;
     height: 80px;
+  }
+  .s {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+  .s img {
+    display: none;
   }
 }
 /* @media screen and (max-width: 768px) {

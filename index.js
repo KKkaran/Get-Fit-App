@@ -47,11 +47,11 @@ function createMuscleGroups(){
 
     var select1 = $("<select>").addClass("muscle1")
     select1.append(
-        $("<option>").text("Select Muscle").val(""), 
+        $("<option>").text("Muscle").val(""), 
     )
     var select2 = $("<select>").addClass("muscle2")
     select2.append(
-        $("<option>").text("Select Muscle").val(""), 
+        $("<option>").text("Muscle").val(""), 
     )
     var submit = $("<input>").addClass("button btn").attr({"type":"submit","value":"Submit"})
     $(".formhandler").append(select1,select2,submit)
