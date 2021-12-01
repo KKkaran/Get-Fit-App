@@ -53,7 +53,7 @@ function createMuscleGroups(){
     select2.append(
         $("<option>").text("Select Muscle").val(""), 
     )
-    var submit = $("<input>").attr({"type":"submit","value":"submit"})
+    var submit = $("<input>").addClass("button btn").attr({"type":"submit","value":"Submit"})
     $(".formhandler").append(select1,select2,submit)
     setTimeout(addDynamicMuscleGroups , 1000)
 }
