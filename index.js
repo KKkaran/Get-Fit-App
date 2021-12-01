@@ -17,5 +17,5 @@ var highlightDay = function() {
 };
 
 highlightDay();
-setInterval(updateTime, 1000);
 updateTime();
+setInterval(updateTime, 1000);
