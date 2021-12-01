@@ -13,7 +13,8 @@ body {
 /* Header Style */
 
 header {
-    padding: 15px 20px;
+
+  
     background-color: rgb(192, 190, 190);
     display: flex;
     margin: 0;
@@ -21,11 +22,63 @@ header {
     width: 100%;
 }
 
+header h1 {
+    font-weight: bold;
+    margin: 0;
+    color: grey;
+}
+
+header a {
+    text-decoration: none;
+    color: black;
+}
+
+header nav {
+    margin: 7px 0;
+    width: 100%;
+    overflow:a auto;
+}
+
+header nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+    width: 80%;
+}
+
+header nav ul li a {
+    /* to create tighter nav menu */
+    padding: 20px;
+    font-weight: lighter;
+    font-size: 1.55vw;
+     /* Applies text-shadow property to <header> navigation bar text */
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    float: left;
+}
+
+/* Add hover effects to nav header */
+header nav ul li a:hover {
+    background:grey;
+    color: white ;
+    border-radius: 15px;
+    text-shadow: none;
+}
+
 header img {
     width: 150px;
     height: 150px;
     float: left;
 }
+
+.glossary {
+    width: 200px;
+    height: 200px;
+    float: left;
+}
+
+
 
 form {
     align-items: center;
@@ -57,22 +110,42 @@ form input {
 
 
 /* Header Style End */
+/* Main Style Start*/
+section {
+    padding: 20px;
+}
 
+p {
+    padding: 10px;
+}
 
 /* Footer Style */
 
 footer {
     background: rgb(192, 190, 190);
     width: 100%;
-    padding: 50px 35px;
+    padding: 50px;
     color: rgb(249, 249, 252);
+    line-height: 1.5;
 }
 
-footer div {
-    line-height: 1.5;
+footer h2 {
     text-align: center;
 }
 
+footer a.glossary {
+    text-align: center;
+    background:grey;
+    color: white ;
+    border-radius: 10px;
+    text-decoration: none;
+    padding: 10px;
+    font-weight: lighter;
+    font-size: 20px;
+    max-height: 50px;
+    position: absolute;
+    right: 0;
+}
 
 /* Footer styles Ends */
 
@@ -87,13 +160,16 @@ footer div {
     width: 150px;
     height: 150px;
 }
-
+.container{
+    width: 100%;
+} 
 .grid {
-    margin: 80px;
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     grid-gap: 15px;
     align-items: center;
+    width: 100%;
+    padding: 10px;
 }
 
 .grid>article {
@@ -102,7 +178,7 @@ footer div {
     box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.3);
     border-radius: 20px;
     text-align: center;
-    width: 150px;
+    
     height: 400px;
     /* transition: transform .3s;*/
 }
@@ -128,7 +204,7 @@ footer div {
 
 /* HERO STYLES END */
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1100px) {
     .grid {
         grid-template-columns: repeat(3, 1fr);
     }
