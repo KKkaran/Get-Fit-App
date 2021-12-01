@@ -1,7 +1,7 @@
 var api = "https://getfitapifinal.herokuapp.com/exercises"
 var exerciseObjects = []//complete list of objects(exercises) on fetch api call
 var chosenExercises = []//list of objects(exercises) on random on button click
-
+var day
 function getExercises(){
 
     fetch(api)
@@ -72,10 +72,33 @@ function addDynamicMuscleGroups(){
     })
     
 }
+function getCurrentDay(){
+    day = moment().format("dddd")
+    console.log(day)
+    console.log($(`.${day}`).parent("article").css("background","lightgreen"))
+
+    //displayInCard()
+    //get the exercises to display on the card
+}
+function displayInCard(){
+    chosenExercises.forEach(el=>{
+        var musc = $("<ul>").text(el["muscle"]).addClass("ul")
+
+        el["exercises"].forEach(exer=>{
+            var exerc = $("<li>").text(exer)
+            musc.append(exerc)
+        })
+        $(`.${day}`).parent("article").find("img").css({"width": "80px","height":"80px"});
+        $(`.${day}`).append(musc)
+    })
+
+}
+
 $(".formhandler").on("submit",function(e){
     e.preventDefault()
     displayExercises()
+    displayInCard()
 })
 getExercises() //this will fetch all the exercises
 createMuscleGroups()//this will create the select options(muscles) in the form
-//
+getCurrentDay()

@@ -25,7 +25,9 @@ body {
   text-align: center;
   width: 100%;
 }
-
+.uls{
+  display: flex;
+}
 .s {
   display: flex;
   justify-content: center;
@@ -33,6 +35,9 @@ body {
 .s > img {
   width: 150px;
   height: 150px;
+}
+.ul{
+  font-size: 12px;
 }
 
 form {
@@ -147,6 +152,13 @@ footer div {
   }
   .s img {
     display: none;
+  }
+
+  article{
+    display: flex;
+  }
+  article > * {
+    display: flex;
   }
 }
 /* @media screen and (max-width: 768px) {
