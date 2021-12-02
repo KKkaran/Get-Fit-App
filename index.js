@@ -1,137 +1,104 @@
-// Variables
-const highlightClass = "card-highlight";
-const muscleGroupSelect = document.getElementById("muscle-group-1-select");
-const muscleGroup2Select = document.getElementById("muscle-group-2-select");
-const searchForm = document.getElementById("search-form");
-const muscleGroupApiUrl =
-  "https://git-fit-api.herokuapp.com/muscle_groups.json";
-const weeklyScheduleDiv = document.getElementById("weekly-schedule");
-const recordsReturnedByApi = 5; // change this to set the amount of records returning from API
+var api = "https://getfitapifinal.herokuapp.com/exercises"
+var exerciseObjects = []//complete list of objects(exercises) on fetch api call
+var chosenExercises = []//list of objects(exercises) on random on button click
+var day
+function getExercises(){
 
-// Functions
+    fetch(api)
+    .then(function(res){
+        return res.json()
+    }).then(function(resp){
+        //console.log(resp)
+        resp.forEach(exer => {
+            var obj = {}
+            obj["muscle"] = exer["muscle"]
+            obj["exercises"] = exer["exercises"]
 
-/**
- * This is called on page load to fetch the muscle groups from the API and to reset / load
- */
-function initPage() {
-  reset();
-  // Hook local storage load HERE
+            exerciseObjects.push(obj)
+        });
+        console.log(resp)
+        
+    })
+}
+function displayExercises(){
 
-  fetch(muscleGroupApiUrl)
-    .then((response) => response.json())
-    .then((responseData) => {
-      for (let i = 0; i < responseData.length; i += 1) {
-        const data = responseData[i];
-        if (data) {
-          createSelectElement(data.name, data.id);
+    var m1 = $(".muscle1").find(":selected").text()
+    var m2 = $(".muscle2").find(":selected").text()
+    var chosenExer = []
+    exerciseObjects.forEach((el) =>{
+        chosenExer = []
+        if((m1 === el["muscle"]) || (m2 === el["muscle"])){
+            var d = el["exercises"]
+            for(let v=0;v<4;v++){
+                var  g = Math.floor(Math.random() * (d.length - v))
+                chosenExer.push(d[g])
+                d.splice(d.indexOf(d[g]),1) 
+            }
+            var obj = {
+                "muscle" : el["muscle"],
+                "exercises" : chosenExer
+            }
+            chosenExercises.push(obj)
         }
-      }
     })
-    // outputs error if unable to search
-    .catch((error) => {
-      throw new Error("Failed to fetch muscle groups from api", error);
-    });
+    console.log(chosenExercises)
 }
+function createMuscleGroups(){
 
-/**
- * This is called to remove the class highlight from any cards
- */
-function reset() {
-  weeklyScheduleDiv.style.display = "none";
-  let elements = document.getElementsByClassName(highlightClass);
-  while (elements.length > 0) {
-    elements[0].classList.remove(highlightClass);
-  }
+    var select1 = $("<select>").addClass("muscle1")
+    select1.append(
+        $("<option>").text("Muscle").val(""), 
+    )
+    var select2 = $("<select>").addClass("muscle2")
+    select2.append(
+        $("<option>").text("Muscle").val(""), 
+    )
+    var submit = $("<input>").addClass("button btn").attr({"type":"submit","value":"Submit"})
+    $(".formhandler").append(select1,select2,submit)
+    setTimeout(addDynamicMuscleGroups , 1000)
 }
-
-/**
- * These dynamically create the select elements in the dropdowns
- */
-function createSelectElement(name, id) {
-  let option = document.createElement("option");
-  option.value = id;
-  option.text = name;
-  // clone after mutation
-  let option2 = option.cloneNode(true);
-  // assign to both selects
-  muscleGroupSelect.appendChild(option);
-  muscleGroup2Select.appendChild(option2);
-}
-
-/**
- * This is called when the form is submited for search
- * It will fetch the IDs from the select elements and grab the associated workouts
- * If you wish to add / remove talk to Robbie Boi
- */
-function loadExercisesBasedOnMuscleGroupId(event) {
-  event.preventDefault();
-  reset();
-
-  let dayOfWeek = moment().format("dddd").toLowerCase();
-
-  let muscleGroup1Id =
-    muscleGroupSelect.options[muscleGroupSelect.selectedIndex].value;
-  let muscleGroup2Id =
-    muscleGroup2Select.options[muscleGroup2Select.selectedIndex].value;
-
-  let exercisesMuscleGroup1Api = `https://git-fit-api.herokuapp.com/muscle_groups/${muscleGroup1Id}/exercises.json?limit=${recordsReturnedByApi}`;
-  let exercisesMuscleGroup2Api = `https://git-fit-api.herokuapp.com/muscle_groups/${muscleGroup2Id}/exercises.json?limit=${recordsReturnedByApi}`;
-
-  fetch(exercisesMuscleGroup1Api)
-    .then((response) => response.json())
-    .then((responseData) => {
-      let dayText = document.getElementById(`${dayOfWeek}-muscle-group-1`);
-      renderDayCardPartial(responseData, dayText);
-      return fetch(exercisesMuscleGroup2Api);
+function addDynamicMuscleGroups(){
+    var select = $(".muscle1")
+    exerciseObjects.forEach(el =>{
+        select.append(
+            $("<option>").text(el["muscle"]).val(el["muscle"]), 
+        )
     })
-    .then((response) => response.json())
-    .then((responseData) => {
-      let dayText = document.getElementById(`${dayOfWeek}-muscle-group-2`);
-      renderDayCardPartial(responseData, dayText);
-      return null;
+    var select2 = $(".muscle2")
+    exerciseObjects.forEach(el =>{
+        select2.append(
+            $("<option>").text(el["muscle"]).val(el["muscle"]), 
+        )
     })
-    .then(() => {
-      // Unhide the container
-      weeklyScheduleDiv.style.display = "block";
+    
+}
+function getCurrentDay(){
+    day = moment().format("dddd")
+    console.log(day)
+    console.log($(`.${day}`).parent("article").css("background","lightgreen"))
+
+    //displayInCard()
+    //get the exercises to display on the card
+}
+function displayInCard(){
+    chosenExercises.forEach(el=>{
+        var musc = $("<ul>").text(el["muscle"]).addClass("ul")
+
+        el["exercises"].forEach(exer=>{
+            var exerc = $("<li>").text(exer)
+            musc.append(exerc)
+        })
+        $(`.${day}`).parent("article").find("img").css({"width": "80px","height":"80px"});
+        $(`.${day}`).append(musc)
     })
-    // outputs error if unable to search
-    .catch((error) => {
-      throw new Error(
-        "Failed to fetch exercises for muscle group " + id,
-        error
-      );
-    });
-  const dayCard = document.getElementById(`${dayOfWeek}-card`);
-  if (dayCard) {
-    dayCard.classList.add(highlightClass);
-  }
+
 }
 
-/**
- * this will render part of the day of the week card assoicated
- * with teh dayText object
- */
-function renderDayCardPartial(responseData, dayText) {
-  if (dayText) {
-    dayText.innerHTML = "";
-    for (let i = 0; i < responseData.length; i += 1) {
-      let data = responseData[i];
-      if (data) {
-        createLiElements(dayText, data);
-      }
-    }
-  }
-}
-/**
- * Create the LI elements inside the UL for day of the week
- */
-function createLiElements(parentDiv, data) {
-  const routine = data.routine;
-  const li = document.createElement("li");
-  li.innerHTML = routine;
-  parentDiv.appendChild(li);
-}
-
-// Event Listeners
-searchForm.addEventListener("submit", loadExercisesBasedOnMuscleGroupId);
-initPage(); // Essentially this is document.load
+$(".formhandler").on("submit",function(e){
+    e.preventDefault()
+    displayExercises()
+    displayInCard()
+})
+getExercises() //this will fetch all the exercises
+createMuscleGroups()//this will create the select options(muscles) in the form
+getCurrentDay()
