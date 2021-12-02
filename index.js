@@ -80,8 +80,8 @@ function getCurrentDay(){
     //displayInCard()
     //get the exercises to display on the card
 }
-function displayInCard(){
-    chosenExercises.forEach(el=>{
+function displayInCard(ce){
+    ce.forEach(el=>{
         var musc = $("<ul>").text(el["muscle"]).addClass("ul")
 
         el["exercises"].forEach(exer=>{
@@ -90,15 +90,29 @@ function displayInCard(){
         })
         $(`.${day}`).parent("article").find("img").css({"width": "80px","height":"80px"});
         $(`.${day}`).append(musc)
+
     })
+    saveLocalStorage()
+}
+function saveLocalStorage(){
+    localStorage.setItem("exercises",JSON.stringify(chosenExercises))
+}
+function loadLocalStorage(){
+    var ex = localStorage.getItem("exercises")
+
+    if(!ex){
+        return
+    }
+    chosenExercises = JSON.parse(ex)
+    displayInCard(chosenExercises)
 
 }
-
 $(".formhandler").on("submit",function(e){
     e.preventDefault()
     displayExercises()
-    displayInCard()
+    displayInCard(chosenExercises)
 })
 getExercises() //this will fetch all the exercises
 createMuscleGroups()//this will create the select options(muscles) in the form
 getCurrentDay()
+loadLocalStorage()
