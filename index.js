@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 var api = "https://getfitapifinal.herokuapp.com/exercises"
 var exerciseObjects = []//complete list of objects(exercises) on fetch api call
 var chosenExercises = []//list of objects(exercises) on random on button click
@@ -103,26 +102,3 @@ $(".formhandler").on("submit",function(e){
 getExercises() //this will fetch all the exercises
 createMuscleGroups()//this will create the select options(muscles) in the form
 getCurrentDay()
-=======
-
-// display date and time
-function updateTime() {
-    $('#clock').html(moment().format('MMMM Do YYYY, h:mm:ss a'))
-};
-
-// highlight day on calendar
-var highlightDay = function() {
-    var weekDay = moment().format('dddd').toLowerCase()
-    
-    // check if article shares id with weekday
-    var cardDate = $("#" + weekDay)
-    
-    if (cardDate) {
-        cardDate.css("background-color", "#add8e6")
-    }
-};
-
-highlightDay();
-updateTime();
-setInterval(updateTime, 1000);
->>>>>>> 5e20d187369428686c8eb5951b47c4f25b58fa03
