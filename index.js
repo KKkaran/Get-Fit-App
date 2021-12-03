@@ -1,6 +1,7 @@
 var api = "https://getfitapifinal.herokuapp.com/exercises"
 var exerciseObjects = []//complete list of objects(exercises) on fetch api call
-var chosenExercises = []//list of objects(exercises) on random on button click
+var chosenExercises = []//list of objects(exercises) on random on button click\
+var daysNexercises = [] //list of all the exercises assigned to a specific day
 var day
 function getExercises(){
 
@@ -16,7 +17,7 @@ function getExercises(){
 
             exerciseObjects.push(obj)
         });
-        console.log(resp)
+        //console.log(resp)
         
     })
 }
@@ -74,13 +75,11 @@ function addDynamicMuscleGroups(){
 }
 function getCurrentDay(){
     day = moment().format("dddd")
-    console.log(day)
-    console.log($(`.${day}`).parent("article").css("background","lightgreen"))
-
-    //displayInCard()
-    //get the exercises to display on the card
+    //console.log(day)
+    $(`.${day}`).parent("article").css("background","lightgreen")
 }
-function displayInCard(ce){
+function displayInCard(ce,weekday){
+    console.log(ce,weekday)
     ce.forEach(el=>{
         var musc = $("<ul>").text(el["muscle"]).addClass("ul")
 
@@ -88,29 +87,46 @@ function displayInCard(ce){
             var exerc = $("<li>").text(exer)
             musc.append(exerc)
         })
-        $(`.${day}`).parent("article").find("img").css({"width": "80px","height":"80px"});
-        $(`.${day}`).append(musc)
+        $(`.${weekday}`).parent("article").find("img").css({"width": "80px","height":"80px"});
+        $(`.${weekday}`).append(musc)
 
     })
+    var obj  ={}
+    obj.day = weekday
+    obj.exercises = chosenExercises
+    if(chosenExercises.length == 0){
+        return
+    }
+    daysNexercises.push(obj)
+    console.log(daysNexercises)
+
     saveLocalStorage()
 }
 function saveLocalStorage(){
-    localStorage.setItem("exercises",JSON.stringify(chosenExercises))
+    console.log(daysNexercises)
+    localStorage.setItem("exercises1",JSON.stringify(daysNexercises))
 }
 function loadLocalStorage(){
-    var ex = localStorage.getItem("exercises")
+    var ex = localStorage.getItem("exercises1")
 
     if(!ex){
+        console.log("empty storage")
         return
     }
-    chosenExercises = JSON.parse(ex)
-    displayInCard(chosenExercises)
+    daysNexercises = JSON.parse(ex)
+    console.log(daysNexercises)
+    daysNexercises.forEach(el=>{
+        console.log(el)
+        displayInCard(el["exercises"],el["day"])
+    })
+
+    //saveLocalStorage()
 
 }
 $(".formhandler").on("submit",function(e){
     e.preventDefault()
     displayExercises()
-    displayInCard(chosenExercises)
+    displayInCard(chosenExercises,day)
 })
 getExercises() //this will fetch all the exercises
 createMuscleGroups()//this will create the select options(muscles) in the form
