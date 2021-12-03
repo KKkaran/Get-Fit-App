@@ -42,7 +42,7 @@ function displayExercises(){
             chosenExercises.push(obj)
         }
     })
-    console.log(chosenExercises)
+    //console.log(chosenExercises)
 }
 function createMuscleGroups(){
 
@@ -79,7 +79,7 @@ function getCurrentDay(){
     $(`.${day}`).parent("article").css("background","lightgreen")
 }
 function displayInCard(ce,weekday){
-    console.log(ce,weekday)
+    //console.log(ce,weekday)
     var musc1 = $("<div>")
     ce.forEach(el=>{
         var musc = $("<ul>").text(el["muscle"]).addClass("ul")
@@ -112,9 +112,10 @@ function displayInCard(ce,weekday){
     console.log(daysNexercises)
 
     saveLocalStorage()
+    chosenExercises = []
 }
 function saveLocalStorage(){
-    console.log(daysNexercises)
+    //console.log(daysNexercises)
     localStorage.setItem("exercises1",JSON.stringify(daysNexercises))
 }
 function loadLocalStorage(){
@@ -125,9 +126,9 @@ function loadLocalStorage(){
         return
     }
     daysNexercises = JSON.parse(ex)
-    console.log(daysNexercises)
+    //console.log(daysNexercises)
     daysNexercises.forEach(el=>{
-        console.log(el)
+        //console.log(el)
         displayInCard(el["exercises"],el["day"])
     })
 
@@ -136,10 +137,13 @@ function loadLocalStorage(){
 }
 $(".formhandler").on("submit",function(e){
     e.preventDefault()
+    if(($('.muscle1').prop('selectedIndex') === 0) || ( $('.muscle2').prop('selectedIndex') === 0)){
+        console.log("empty")
+        return
+    }
     displayExercises()
-    $('.muscle1').prop('selectedIndex', 0);
-    $('.muscle2').prop('selectedIndex', 0);
     displayInCard(chosenExercises,day)
+    
 })
 getExercises() //this will fetch all the exercises
 createMuscleGroups()//this will create the select options(muscles) in the form
