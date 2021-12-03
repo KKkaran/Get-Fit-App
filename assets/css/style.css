@@ -169,7 +169,7 @@ footer div {
   article {
     display: flex;
   }
-  article > * {
+  article > div > div {
     display: flex;
   }
 }

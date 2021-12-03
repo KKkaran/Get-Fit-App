@@ -80,6 +80,7 @@ function getCurrentDay(){
 }
 function displayInCard(ce,weekday){
     console.log(ce,weekday)
+    var musc1 = $("<div>")
     ce.forEach(el=>{
         var musc = $("<ul>").text(el["muscle"]).addClass("ul")
 
@@ -88,15 +89,25 @@ function displayInCard(ce,weekday){
             musc.append(exerc)
         })
         $(`.${weekday}`).parent("article").find("img").css({"width": "80px","height":"80px"});
-        $(`.${weekday}`).append(musc)
+        musc1.append(musc)
+        
 
     })
+    $(`.${weekday} div`).replaceWith(musc1)
     var obj  ={}
     obj.day = weekday
     obj.exercises = chosenExercises
     if(chosenExercises.length == 0){
         return
     }
+    var f = -1;
+    daysNexercises.forEach(el=>{
+        f++
+        if(el["day"] === weekday){
+            console.log("day already exists")
+            daysNexercises.splice(f,1)
+        }
+    })
     daysNexercises.push(obj)
     console.log(daysNexercises)
 
@@ -126,6 +137,8 @@ function loadLocalStorage(){
 $(".formhandler").on("submit",function(e){
     e.preventDefault()
     displayExercises()
+    $('.muscle1').prop('selectedIndex', 0);
+    $('.muscle2').prop('selectedIndex', 0);
     displayInCard(chosenExercises,day)
 })
 getExercises() //this will fetch all the exercises
