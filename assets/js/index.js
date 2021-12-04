@@ -139,6 +139,7 @@ $(".formhandler").on("submit",function(e){
     e.preventDefault()
     if(($('.muscle1').prop('selectedIndex') === 0) || ( $('.muscle2').prop('selectedIndex') === 0)){
         console.log("empty")
+        alert("Pick both the muscles first")
         return
     }
     displayExercises()
