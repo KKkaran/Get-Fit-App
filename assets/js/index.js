@@ -135,11 +135,22 @@ function loadLocalStorage(){
     //saveLocalStorage()
 
 }
+
+$(".closebtn").on("click",()=>{
+    $(".modal").css("display","none")
+})
+window.addEventListener("click",(e)=>{
+    
+    if(e.target.matches(".modal")){
+        $(".modal").css("display","none")
+    }
+
+})
 $(".formhandler").on("submit",function(e){
     e.preventDefault()
     if(($('.muscle1').prop('selectedIndex') === 0) || ( $('.muscle2').prop('selectedIndex') === 0)){
         console.log("empty")
-        alert("Pick both the muscles first")
+        $(".modal").css("display","block")
         return
     }
     displayExercises()
