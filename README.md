@@ -5,7 +5,7 @@
 ![](assets/images/snap1.PNG)
 ![](assets/images/snap2.PNG)
 # Functionality:
-#The user is presented with a randomized set of exercises that focuses on certain areas of body regions when he selects the two muscle groups of his choice.
+# The user is presented with a randomized set of exercises that focuses on certain areas of body regions when he selects the two muscle groups of his choice.
 # Specifications:
 # CSS framework used is Foundation.
 # The app is completely responsive and adjusts on the screen accordingly.
