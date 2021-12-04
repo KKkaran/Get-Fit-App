@@ -4,38 +4,18 @@
 #The app is live # @https://kkkaran.github.io/Get-Fit-App/
 ![](assets/images/snap1.PNG)
 ![](assets/images/snap2.PNG)
+# Functionality:
+#The user is presented with a randomized set of exercises that focuses on certain areas of body regions when he selects the two muscle groups of his choice.
+# Specifications:
+#CSS framework used is Foundation.
+#The app is completely responsive and adjusts on the screen accordingly.
+#Our team created our own custom API. WE used node and express for backend and deployed it on the Heroku server to make it online.
+#The API is live @https://getfitapifinal.herokuapp.com/exercises
+#There are 2 API calls made: One for fetching the body muscles and populating the select tag and second is 
+#when the user makes his choice, the API call fetches the corresponding exercises and displays in the current day card.
+#Local Storage is used to store the exercises in the corresponding day so as display the same exercises in the same at the time of refresh.
 
 
 
 
-# User Story:
-As a user, I am presented with a randomized set of exercises that focuses on certain areas of body regions
-when I select the two muscle groups of my choice. 
 
-# Acceptance Criteria:
-WHEN I click to populate random exercises
-THEN I am given five appropriate exercises per muscle group. 
-
-WHEN I click on the drop-down menu 
-THEN I am given all muscle group options. 
-
-WHEN I click on the day,
-THEN it populates on the chosen day. 
-
-WHEN we are on the current day, 
-THEN that day is a different color that differentiates from the rest of week. 
-
-WHEN I reopen the application
-THEN I am able to see my previously generated workouts. 
-
-WHEN I click on the Reset button, 
-THEN the calendar resets. 
-
-WHEN I re-click Exercise button, 
-THEN I am given a new set of randomly chosen exercises.
-
-Added future features: 
-* "Strike out" exercises after user completes exercise.
-* Hign intensity interval training (HIIT) feature
-* Timer challenge
-* AMRAP (As Many Reps As Possible) workouts
