@@ -1,6 +1,13 @@
 # Project 1 - Get-Fit
 Get-Fit is an application that will randomize your daily or weekly work-outs to focus on strength, cardio, functional fitness and core training.
 
+# The app is live @https://kkkaran.github.io/Get-Fit-App/
+![]("assets/snap1.PNG")
+![]("assets/snap2.PNG")
+
+
+
+
 # User Story:
 As a user, I am presented with a randomized set of exercises that focuses on certain areas of body regions
 when I select the two muscle groups of my choice. 
