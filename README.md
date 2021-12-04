@@ -13,6 +13,7 @@
 # Specifications:
 
 # CSS framework used is Foundation.
+# Made the use of Modals
 # The app is completely responsive and adjusts on the screen accordingly.
 
 # API:
