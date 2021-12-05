@@ -143,36 +143,6 @@ footer div {
 .text h3 {
   text-transform: uppercase;
 }
-
-/* HERO STYLES END */
-@media (max-width: 900px) {
-  .grid {
-    flex-direction: column;
-    height: auto;
-  }
-  .grid article {
-    height: auto;
-  }
-  .grid img {
-    width: 80px;
-    height: 80px;
-  }
-  .s {
-    flex-direction: column;
-    text-align: center;
-    align-items: center;
-  }
-  .s img {
-    display: none;
-  }
-
-  article {
-    display: flex;
-  }
-  article > div > div {
-    display: flex;
-  }
-}
 .modal {
   display: none;
   position: fixed;
@@ -212,5 +182,40 @@ footer div {
   }
   to {
     opacity: 1;
+  }
+}
+
+/* HERO STYLES END */
+@media (max-width: 900px) {
+  .grid {
+    flex-direction: column;
+    height: auto;
+  }
+  .grid article {
+    height: auto;
+  }
+  .grid img {
+    width: 80px;
+    height: 80px;
+  }
+  .s {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+  .s img {
+    display: none;
+  }
+
+  article {
+    display: flex;
+  }
+  article > div > div {
+    display: flex;
+  }
+}
+@media (max-width: 700px) {
+  .modal-content {
+    width: 80%;
   }
 }
